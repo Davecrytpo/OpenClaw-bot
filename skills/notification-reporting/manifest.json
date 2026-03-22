@@ -4,8 +4,5 @@
   "description": "Sends notifications to Telegram.",
   "triggers": [],
   "permissions": ["network", "memory:read"],
-  "config": {
-    "telegram_token": "8047642891:AAF0XIYJHDcjutVtJ4DlrssE3sQW_5_joJ8",
-    "telegram_chat_id": "5711525084"
-  }
+  "config": {}
 }

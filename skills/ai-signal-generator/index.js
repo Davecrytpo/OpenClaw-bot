@@ -11,29 +11,27 @@ class AISignalGeneratorSkill {
   }
 
   async handleAction(context) {
-    const { currentPrice, historicalData, symbol } = context.data;
+    const { currentPrice, historical15m, historical1h, symbol } = context.data;
     
-    // Improved Analysis context for 30 points
-    const last30 = historicalData.slice(-30);
-    const last30Closes = last30.map(d => d.close).join(', ');
-    const last30Volumes = last30.map(d => d.volume).join(', ');
+    // Formatting data for the AI
+    const last30_15m = historical15m.slice(-30).map(d => d.close).join(', ');
+    const last30_1h = historical1h.slice(-30).map(d => d.close).join(', ');
 
-    // More Professional and Quantitative Prompt
     const prompt = `
-    MARKET ANALYSIS FOR ${symbol}:
+    PROFESSIONAL MARKET ANALYSIS FOR ${symbol}:
     Current Price: ${currentPrice}
-    Current Account Balance: $${this.balance}
+    Account Balance: $${this.balance}
 
-    Historical Prices (Last 30 Closes):
-    ${last30Closes}
+    15-MINUTE TREND (Last 30 Closes):
+    ${last30_15m}
 
-    Volumes (Last 30 periods):
-    ${last30Volumes}
+    1-HOUR TREND (Last 30 Closes):
+    ${last30_1h}
 
-    GOAL: Professional Risk-Adjusted Trading.
-    1. Analyze the trend, support/resistance, and volume momentum.
-    2. Given our capital of $${this.balance}, determine if there is a high-probability trade. 
-    3. Note: If capital is low (e.g., <$50), we should be more selective with entries.
+    GOAL: Professional Multi-Timeframe Trading.
+    1. Confirm the 1-hour trend before looking for entries on the 15-minute chart.
+    2. Look for price-action patterns (reversals, breakouts, or momentum).
+    3. Determine if there is a high-probability trade opportunity.
     
     You MUST respond in this JSON format:
     {
@@ -41,7 +39,7 @@ class AISignalGeneratorSkill {
       "confidence": 0-100,
       "take_profit": number,
       "stop_loss": number,
-      "reasoning": "1-sentence professional explanation"
+      "reasoning": "1-sentence professional explanation incorporating BOTH timeframes"
     }
     `;
 

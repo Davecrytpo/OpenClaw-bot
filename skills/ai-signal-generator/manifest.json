@@ -1,11 +1,10 @@
 {
   "name": "ai-signal-generator",
   "version": "1.0.0",
-  "description": "Uses Groq AI (Free) to generate trading signals.",
+  "description": "Uses Groq AI to generate trading signals.",
   "triggers": [],
   "permissions": ["network", "memory:read"],
   "config": {
-    "groq_api_key": "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",
     "model_name": "llama-3.3-70b-versatile"
   }
 }

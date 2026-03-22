@@ -31,23 +31,9 @@ class MarketDataFetcherSkill {
       };
       return { event: 'ai-signal-generator.handleAction', data: data };
     } catch (error) {
-      // Fallback: Mock Data for Demonstration if exchange is blocked
-      const mockPrice = 68000 + Math.random() * 1000;
-      const data = {
-        currentPrice: mockPrice,
-        historicalData: Array.from({ length: 50 }, (_, i) => ({
-          timestamp: Date.now() - (50 - i) * 3600000,
-          open: mockPrice - 100,
-          high: mockPrice + 100,
-          low: mockPrice - 200,
-          close: mockPrice + (Math.random() - 0.5) * 500,
-          volume: 100
-        })),
-        symbol: symbol,
-        isMock: true,
-        error: error.message
-      };
-      return { event: 'ai-signal-generator.handleAction', data: data };
+      console.error(`❌ Market Data Error for ${symbol}: ${error.message}`);
+      // Fail-Fast: Never return mock data for a professional bot
+      throw new Error(`CRITICAL: Could not fetch real data for ${symbol}. Skipping cycle.`);
     }
   }
 }
