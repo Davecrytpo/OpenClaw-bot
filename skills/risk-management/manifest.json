@@ -1,0 +1,11 @@
+{
+  "name": "risk-management",
+  "version": "1.0.0",
+  "description": "Calculates risk for trades.",
+  "triggers": [],
+  "permissions": ["memory:read"],
+  "config": {
+    "max_risk_per_trade_percent": 1.0,
+    "total_balance": 1000
+  }
+}

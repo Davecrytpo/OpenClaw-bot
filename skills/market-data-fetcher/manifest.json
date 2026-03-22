@@ -1,0 +1,12 @@
+{
+  "name": "market-data-fetcher",
+  "version": "1.0.0",
+  "description": "Fetches market data from Binance.",
+  "triggers": ["analyze *"],
+  "permissions": ["network", "memory:write"],
+  "config": {
+    "exchange_id": "binance",
+    "timeframe": "1h",
+    "limit": 100
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "trading-execution",
+  "version": "1.0.0",
+  "description": "Executes trades on Binance.",
+  "triggers": [],
+  "permissions": ["network", "memory:read"],
+  "config": {
+    "exchange_id": "binance",
+    "exchange_api_key": "pPDs2WbobqfjYwMLLju5ooCnEb7B4nhiBCO8CmweuZFdCsauOnH1mjRAqeg4u2Wf",
+    "exchange_secret": "iEailZbww7ydc3XWgVFQD7LzU3E6iLtqbxB6zP8GqGfLdpxRQjmzDxJlZ1VjAOvr"
+  }
+}
